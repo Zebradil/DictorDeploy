@@ -6,7 +6,7 @@ services:
             - './spa:/opt/spa'
         working_dir: /opt/spa
         command: >-
-            /bin/sh -c 'npm install --production && npm install --unsafe-perm -g
+            /bin/sh -c 'npm install && npm install --unsafe-perm -g
             @angular/cli && ng build --prod'
     db:
         image: 'postgres:9-alpine'
