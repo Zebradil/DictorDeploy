@@ -1,5 +1,13 @@
 version: '2'
 services:
+    spa:
+        image: 'node:alpine'
+        volumes:
+            - './spa:/opt/spa'
+        working_dir: /opt/spa
+        command: >-
+            /bin/sh -c 'npm install --production && npm install --unsafe-perm -g
+            @angular/cli && ng build --prod'
     db:
         image: 'postgres:9-alpine'
         volumes:
