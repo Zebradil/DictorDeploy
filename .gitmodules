@@ -1,0 +1,6 @@
+[submodule "spa"]
+	path = spa
+	url = https://github.com/Zebradil/DictorClient.git
+[submodule "api"]
+	path = api
+	url = https://github.com/Zebradil/DictionaryWebEditor.git

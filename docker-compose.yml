@@ -1,0 +1,27 @@
+version: '2'
+services:
+    db:
+        image: 'postgres:9-alpine'
+        volumes:
+            - './data/db:/var/lib/postgresql/data'
+        env_file: .env
+    php:
+        build: php7-fpm
+        env_file: .env
+        volumes:
+            - './api:/var/www/api'
+        depends_on:
+            - db
+    nginx:
+        image: 'nginx:alpine'
+        ports:
+            - '80:80'
+        volumes:
+            - './nginx/main.template:/etc/nginx/main.template'
+            - './spa:/var/www/spa'
+        volumes_from:
+            - php
+        env_file: .env
+        command: >-
+            /bin/sh -c 'envsubst \$${NGINX_HOST},\$${APP_ENTRY_POINT} <
+            /etc/nginx/main.template > /etc/nginx/nginx.conf && nginx'
