@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 RETRIES=10
 until PGPASSWORD=${POSTGRES_PASSWORD} \
