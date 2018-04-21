@@ -20,6 +20,8 @@ services:
             - './api:/var/www/api'
         depends_on:
             - db
+        links:
+            - db
     nginx:
         image: 'nginx:alpine'
         ports:
